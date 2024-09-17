@@ -37,10 +37,10 @@ sum_of_perfect_squares: Calculates the sum of squares for k numbers starting fro
 integer_root: A utility function that computes the integer square root of a number using Newton's method to verify if the sum is a perfect square.
 
 ## Work Unit Size and Its Determination Method
-In your code, the work unit size, work_size, is determined by dividing the total number of sub-problems by the number of workers; in other words, work_size = n_input/workers. Here, you've set the number of workers to be 200 by default unless your input size, n_input, is less than 200. You might need for each worker to work on a chunk of the work, which will be about 5000 sub-problems as described in your output.
+In the code, the work unit size, work_size, is determined by dividing the total number of sub-problems by the number of workers; in other words, work_size = n_input/workers. Here, the number of workers are set to be 200. Each worker has to work on a chunk of the work, which will be about 5000 sub-problem.
 
 ### Finding Optimal Performance
-Performance Consideration: The performance optimization comes from balancing the load across workers. You slice the input into chunks of roughly equal-sized sub-problems to reduce at least some idleness, as every worker also has some amount of work to be done.
+Performance Consideration: The performance optimization comes from balancing the load across workers. We slice the input into chunks of roughly equal-sized sub-problems to reduce at least some idleness, as every worker also has some amount of work to be done.
 
 Adjustments in Work Size: If the number of sub-problems isn't divisible evenly—that is, came out with a remainder—then the last chunk comes out a little bigger. This adjustment ensures that all the sub-problems are dealt with without causing huge imbalances. Smaller work size implies more workers that can potentially reduce execution time due to more parallelism but may lead to more overhead in the creation and communication of actors. Again, this seems to be optimally set by trial and error or observing CPU usage at 200 workers.
 
