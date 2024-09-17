@@ -45,7 +45,6 @@ be assign_work() =>
   var start: I64 = 1
 
   if (((_n % 2) != 0) or ((workers % 2) != 0)) and (remainder != 0) then
-    // Apply sliding window by adjusting the last chunk
     for i in Range[I64](0, workers - 1) do
       let ending: I64 = (i + 1) * work_size
       ranges.push((start, ending))
