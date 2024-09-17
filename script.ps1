@@ -19,7 +19,7 @@ $executionTime = Measure-Command {
 }
 
 # Real time
-$realTime = [math]::Round($executionTime.TotalSeconds, 2)/16
+$realTime = [math]::Round($executionTime.TotalSeconds, 2)
 
 # CPU time calculation for the process: user time and system time
 $process = Start-Process -FilePath $executablePath -ArgumentList $executableArgs -PassThru
